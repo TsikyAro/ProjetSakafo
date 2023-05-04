@@ -49,6 +49,114 @@ namespace Sakafo_isan_andro
         {
             this.idTypeSakafo = idTypeSakafo;
         }
+        public Sakafo[] accompanement(Connexion c)
+        {
+            List<Sakafo> sakafoList = new List<Sakafo>();
+            SqlConnection con = c.connexion();
+            con.Open();
+            String sql = "SELECT * FROM AcC";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                sakafoList.Add(temp);
+            }
+            Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
+            con.Close();
+            sakafoArray = sakafoList.ToArray();
+            return sakafoArray;
+        }
+        public Sakafo[] legumeBas(Connexion c)
+        {
+            List<Sakafo> sakafoList = new List<Sakafo>();
+            SqlConnection con = c.connexion();
+            con.Open();
+            String sql = "SELECT * FROM LegumeB";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                sakafoList.Add(temp);
+            }
+            Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
+            con.Close();
+            sakafoArray = sakafoList.ToArray();
+            return sakafoArray;
+        }
+        public Sakafo[] legumeHaut(Connexion c)
+        {
+            List<Sakafo> sakafoList = new List<Sakafo>();
+            SqlConnection con = c.connexion();
+            con.Open();
+            String sql = "SELECT * FROM LegumeH";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                sakafoList.Add(temp);
+            }
+            Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
+            con.Close();
+            sakafoArray = sakafoList.ToArray();
+            return sakafoArray;
+        }
+        public Sakafo[] abbat(Connexion c)
+        {
+            List<Sakafo> sakafoList = new List<Sakafo>();
+            SqlConnection con = c.connexion();
+            con.Open();
+            String sql = "SELECT * FROM AbB";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                sakafoList.Add(temp);
+            }
+            Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
+            con.Close();
+            sakafoArray = sakafoList.ToArray();
+            return sakafoArray;
+        }
+        public Sakafo[] viandeRouge(Connexion c)
+        {
+            List<Sakafo> sakafoList = new List<Sakafo>();
+            SqlConnection con = c.connexion();
+            con.Open();
+            String sql = "SELECT * FROM ViandeR";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                sakafoList.Add(temp);
+            }
+            Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
+            con.Close();
+            sakafoArray = sakafoList.ToArray();
+            return sakafoArray;
+        }
+        public Sakafo[] viandeBlanche(Connexion c)
+        {
+            List<Sakafo> sakafoList = new List<Sakafo>();
+            SqlConnection con = c.connexion();
+            con.Open();
+            String sql = "SELECT * FROM ViandeB";
+            SqlCommand command = new SqlCommand(sql, con);
+            SqlDataReader data = command.ExecuteReader();
+            while (data.Read())
+            {
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                sakafoList.Add(temp);
+            }
+            Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
+            con.Close();
+            sakafoArray = sakafoList.ToArray();
+            return sakafoArray;
+        }
 
         public Sakafo[] getDonnee(Connexion c)
         {

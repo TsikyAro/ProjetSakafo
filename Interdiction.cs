@@ -7,12 +7,14 @@ namespace Sakafo_isan_andro
     {
         private string idInterdiction;
         private string idSanter;
+        private string idTypeSakafo;
         private double maximum;
 
-        public Interdiction(string idInterdiction, string idSanter, double maximum)
+        public Interdiction(string idInterdiction, string idSanter, string idTypeSakafo, double maximum)
         {
             this.setIdInterdiction(idInterdiction);
             this.setIdSanter(idSanter);
+            this.setIdTypeSakafo(idTypeSakafo);
             this.setMaximum(maximum);
         }
 
@@ -30,7 +32,7 @@ namespace Sakafo_isan_andro
             this.idInterdiction = idInterdiction;
         }
 
-        public string getidSanter()
+        public string getIdSanter()
         {
             return idSanter;
         }
@@ -38,6 +40,15 @@ namespace Sakafo_isan_andro
         public void setIdSanter(string idSanter)
         {
             this.idSanter = idSanter;
+        }
+        public string getIdTypeSakafo()
+        {
+            return idTypeSakafo;
+        }
+
+        public void setIdTypeSakafo(string idSanter)
+        {
+            this.idTypeSakafo = idSanter;
         }
 
         public double getMaximum()
@@ -60,7 +71,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Interdiction temp = new Interdiction(data.GetString(0), data.GetString(1), data.GetDouble(2));
+                Interdiction temp = new Interdiction(data.GetString(0), data.GetString(1),data.GetString(2), data.GetDouble(3));
                 InterdictionList.Add(temp);
             }
             Interdiction[] InterdictionArray = new Interdiction[InterdictionList.Count];
@@ -73,10 +84,11 @@ namespace Sakafo_isan_andro
         {
             SqlConnection con = c.connexion();
             con.Open();
-            String sql = "INSERT INTO Interdiction (idSanter, idTypeInterdiction) VALUES ('@idSanter', '@idTypeInterdiction')";
-            SqlCommand cmd = new SqlCommand(sql);
-            cmd.Parameters.AddWithValue("@idSanter", this.getidSanter());
-            cmd.Parameters.AddWithValue("@idTypeInterdiction", this.getMaximum());
+            String sql = "INSERT INTO Interdiction (idSanter, idTypeSakafo,maximun) VALUES (@idSanter, @idTypeSakafo,@maximum)";
+            SqlCommand cmd = new SqlCommand(sql,con);
+            cmd.Parameters.AddWithValue("@idSanter", this.getIdSanter());
+            cmd.Parameters.AddWithValue("@idTypeSakafo", this.getIdTypeSakafo());
+            cmd.Parameters.AddWithValue("@maximum", this.getMaximum());
             cmd.ExecuteNonQuery();
             con.Close();
         }

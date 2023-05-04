@@ -67,6 +67,7 @@ CREATE TABLE typeSakafo (
     nom varchar(30) NOT NULL,
     CONSTRAINT PK_typeSakafo PRIMARY KEY (idTypeSakafo)
 );
+insert into typeSakafo (nom) values ('Viande rouge'),('Viande blanche'),('Abbat'),('Legume haut'),('Legume bas'),('Legume haut'),('Accompagnement');
 
 CREATE TABLE sakafo (
     idSakafo varchar(10) NOT NULL DEFAULT 'SKF' + RIGHT('0000000' + CAST(NEXT VALUE FOR seqSakafo AS varchar(7)), 7),
@@ -94,9 +95,37 @@ CREATE TABLE composantPlat (
 CREATE TABLE interdiction (
     idInterdiction varchar(10) NOT NULL DEFAULT 'ID' + RIGHT('0000000' + CAST(NEXT VALUE FOR seqInterdiction AS varchar(7)), 7),
     idSanter varchar(10) NOT NULL,
+    idTypeSakafo varchar(10) REFERENCES typeSakafo(idTypeSakafo),
     maximum double precision NOT NULL,
     CONSTRAINT PK_interdiction PRIMARY KEY (idInterdiction),
     CONSTRAINT FK_interdiction_santer FOREIGN KEY (idSanter) REFERENCES santer(idSanter)
 );
+
+
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/01',1);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/02',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/03',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/04',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/05',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/06',1);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/07',1);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/08',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/09',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/10',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/11',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/12',0);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/13',1);
+INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES ('P0000063','2023/05/14',1);
+
+
+insert into sakafo (nom,idTypeSakafo) values
+('Accomp1','TS0000013'),
+('Accomp2','TS0000013'),
+('Accomp3','TS0000013'),
+('Accomp4','TS0000013'),
+('Accomp5','TS0000013'),
+('Accomp6','TS0000013'),
+('Accomp7','TS0000013'),
+('Accomp8','TS0000013')
 
 create view single as select p.* from personne p left join membreFamille m on p.idPersonne = m.idPersonne where m.idFamille is null;

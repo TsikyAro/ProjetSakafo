@@ -73,19 +73,6 @@ namespace Sakafo_isan_andro
                 con.Close();
             }
         }
-
-        // public void insert(Connexion c)
-        // {
-        //     SqlConnection con = c.connexion();
-        //     con.Open();
-        //     String sql = "INSERT INTO Etat (idSanter, idPersonne, pourcentage) VALUES (@idSanter, @idPersonne, @pourcentage)";
-        //     SqlCommand cmd = new SqlCommand(sql,con);
-        //     cmd.Parameters.AddWithValue("@idSanter", this.getIdSanter());
-        //     cmd.Parameters.AddWithValue("@idPersonne", this.getIdPersonne());
-        //     cmd.Parameters.AddWithValue("@pourcentage", this.getPourcentage());
-        //     cmd.ExecuteNonQuery();
-        //     con.Close();
-        // }
         public Etat[] getDonnee(Connexion c)
         {
             List<Etat> etats = new List<Etat>();

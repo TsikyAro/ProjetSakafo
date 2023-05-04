@@ -67,5 +67,11 @@ namespace Sakafo_isan_andro
             cmd.ExecuteNonQuery();
             con.Close();
         }
+
+        // public Plat[] suggestionPlat(Connexion c, Famille famille, DateTime date1, DateTime date2)
+        // {
+        //     Personne[] personnes = famille.getMembreFamille(c);
+
+        // }
     }
 }

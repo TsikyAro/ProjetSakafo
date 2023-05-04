@@ -6,14 +6,14 @@ namespace Sakafo_isan_andro
     public class Disponibilite
     {
         private string idDisponibilite;
-        private string idEmploiDuTemp;
+        private string idPersonne;
         private DateTime leDate;
         private int disponibilite;
 
-        public Disponibilite(string idDisponibilite, string idEmploiDuTemp, DateTime leDate, int disponibilite)
+        public Disponibilite(string idDisponibilite, string idPersonne, DateTime leDate, int disponibilite)
         {
             this.setIdDisponibilite(idDisponibilite);
-            this.setIdEmploiDuTemp(idEmploiDuTemp);
+            this.setIdPersonne(idPersonne);
             this.setLeDate(leDate);
             this.setDisponibilite(disponibilite);
         }
@@ -32,14 +32,14 @@ namespace Sakafo_isan_andro
             this.idDisponibilite = idDisponibilite;
         }
 
-        public string getIdEmploiDuTemp()
+        public string getIdPersonne()
         {
-            return idEmploiDuTemp;
+            return idPersonne;
         }
 
-        public void setIdEmploiDuTemp(string idEmploiDuTemp)
+        public void setIdPersonne(string idEmploiDuTemp)
         {
-            this.idEmploiDuTemp = idEmploiDuTemp;
+            this.idPersonne = idEmploiDuTemp;
         }
 
         public DateTime getLeDate()
@@ -85,9 +85,9 @@ namespace Sakafo_isan_andro
         {
             SqlConnection con = c.connexion();
             con.Open();
-            String sql = "INSERT INTO Disponibilite (idEmploiDuTemp, leDate, disponibilite) VALUES ('@idEmploiDuTemp', '@leDate', @disponibilite)";
+            String sql = "INSERT INTO Disponibilite (idPersonne, leDate, disponibilite) VALUES (@idPersonne, @leDate, @disponibilite)";
             SqlCommand cmd = new SqlCommand(sql);
-            cmd.Parameters.AddWithValue("@idEmploiDuTemp", this.getIdEmploiDuTemp());
+            cmd.Parameters.AddWithValue("@idEmploiDuTemp", this.getIdPersonne());
             cmd.Parameters.AddWithValue("@leDate", this.getLeDate());
             cmd.Parameters.AddWithValue("@disponibilite", this.getDisponibilite());
             cmd.ExecuteNonQuery();

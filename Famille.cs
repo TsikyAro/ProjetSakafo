@@ -70,6 +70,57 @@ public class Famille
         con.Close();
         return result;
     }
+    public Sakafo[] sakafoJour(Connexion c, DateTime date)
+    {
+        Random random = new Random();
+        Sakafo temp = new Sakafo();
+        Personne[] present = this.disponible(c,date);
+        List<Sakafo> composant = new List<Sakafo>();
+        if(checkMarary(c,present))
+        {
+            Sakafo[] lh = temp.legumeBas(c);
+            composant.Add(lh[random.Next(0,lh.Length-1)]);
+        }
+        Sakafo[] lb = temp.legumeHaut(c);
+        composant.Add(lb[random.Next(0,lb.Length-1)]);
+        Sakafo[] vb = temp.viandeRouge(c);
+        composant.Add(vb[random.Next(0,vb.Length-1)]);
+        Sakafo[] vr = temp.viandeBlanche(c);
+        composant.Add(vr[random.Next(0,vr.Length-1)]);
+        Sakafo[] ab = temp.abbat(c);
+        composant.Add(ab[random.Next(0,ab.Length-1)]);
+        Sakafo[] ac = temp.accompanement(c);
+        composant.Add(ac[random.Next(0,ac.Length-1)]);
+
+        Sakafo[] resultat = new Sakafo[composant.Count];
+        resultat = composant.ToArray();
+        return resultat;
+    }
+    public Personne[] disponible(Connexion c, DateTime date)
+    {
+        Personne[] personnes = this.getMembreFamille(c);
+        List<Personne> list = new List<Personne>();
+        foreach (Personne personne in personnes)
+        {
+            if(personne.getDisponibilite(c,date) == 1)
+            {
+                list.Add(personne);
+            }
+        }
+        Personne[] tpersonne = new Personne[list.Count];
+        return tpersonne;
+    }
+    public bool checkMarary(Connexion c, Personne[] pers)
+    {
+        foreach (Personne personne in pers)
+        {
+            if(personne.mararyVe(c))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     public Personne[] getMembreFamille(Connexion c)
     {

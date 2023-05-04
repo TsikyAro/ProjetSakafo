@@ -68,6 +68,48 @@ public class Personne
         personnesArray = personnes.ToArray();
         return personnesArray;
     }
+    public Etat getEtat(Connexion c)
+    {
+        SqlConnection con = c.connexion();
+        con.Open();
+        String sql = $"select * from etat where idpersonne='{this.getIdPersonne()}'";
+        SqlCommand command = new SqlCommand(sql, con);
+        SqlDataReader data = command.ExecuteReader();
+        Etat etat = new Etat();
+        if(data.Read())
+        {
+            etat.setIdEtat(data.GetString(0));
+            etat.setIdPersonne(data.GetString(2));
+            etat.setIdSanter(data.GetString(1));
+            etat.setPourcentage(data.GetInt32(3));
+        }
+        return etat;
+    }
+    public bool mararyVe(Connexion c)
+    {
+        Etat etat = this.getEtat(c);
+        if(etat.getIdSanter() == "S0000001")
+        {
+            return true;
+        }
+        return false;
+    }
+    public int getDisponibilite(Connexion c, DateTime date)
+    {
+        SqlConnection con = c.connexion();
+        con.Open();
+        String sql = $"select  from disponibilite where idPersonne = '{this.getIdPersonne()}' leDate = CONVERT(datetime, '{date.ToString("dd/MM/yyyy")}', 103)";
+        SqlCommand command = new SqlCommand(sql, con);
+        SqlDataReader data = command.ExecuteReader();
+        if(data.Read())
+        {
+            return data.GetInt32(0);
+        }
+        else
+        {
+            return 0;
+        }
+    }
     public Personne[] getDonnee(Connexion c)
     {
         List<Personne> personnes = new List<Personne>();
