@@ -20,11 +20,17 @@ namespace Sakafo_isan_andro
                 checkBox.Items.Add(personnes[i].getNom(),false);
             }
             this.Controls.Add(checkBox);
+
+            this.Controls.Add(new Label() { Text = "Salaire", Location = new Point(250, 10) });
+            NumericUpDown pourcentageUpDown = new NumericUpDown() { Location = new Point(250, 50), Minimum = 10000, Maximum = 10000000 };
+            this.Controls.Add(pourcentageUpDown);
+
             Button saveButton = new Button() { Text = "Creation famille", Location = new Point(150, 90) };
             saveButton.Click +=(sender, e) =>
             {
+                double pourcentage = (double) pourcentageUpDown.Value;
                 String nom = nomTextBox.Text;
-                Famille famille = new Famille(null,nom);
+                Famille famille = new Famille(null,nom,pourcentage);
                 famille.insert(c);
                 famille.setIdFamille(famille.getIdFamille(c));
                 string message = "";

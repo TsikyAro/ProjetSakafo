@@ -6,11 +6,21 @@ public class Famille
 {
     private string idFamille;
     private string nom;
+    private double salaire;
+    public double getSalaire()
+    {
+        return this.salaire;
+    }
+    public void setSalaire(double salaire)
+    {
+        this.salaire = salaire;
+    }
 
-    public Famille(string idFamille, string nom)
+    public Famille(string idFamille, string nom, double salaire)
     {
         this.setIdFamille(idFamille);
         this.setNom(nom);
+        this.setSalaire(salaire);
     }
 
     public Famille()
@@ -47,7 +57,7 @@ public class Famille
         SqlDataReader data = command.ExecuteReader();
         while (data.Read())
         {
-            Famille temp = new Famille(data.GetString(0), data.GetString(1));
+            Famille temp = new Famille(data.GetString(0), data.GetString(1),data.GetDouble(2));
             familles.Add(temp);
         }
         Famille[] familleArray = new Famille[familles.Count];
@@ -70,35 +80,8 @@ public class Famille
         con.Close();
         return result;
     }
-    public Sakafo[] sakafoJour(Connexion c, DateTime date)
+    public Personne[] disponible(Connexion c,Personne[] personnes, DateTime date)
     {
-        Random random = new Random();
-        Sakafo temp = new Sakafo();
-        Personne[] present = this.disponible(c,date);
-        List<Sakafo> composant = new List<Sakafo>();
-        if(checkMarary(c,present))
-        {
-            Sakafo[] lh = temp.legumeBas(c);
-            composant.Add(lh[random.Next(0,lh.Length-1)]);
-        }
-        Sakafo[] lb = temp.legumeHaut(c);
-        composant.Add(lb[random.Next(0,lb.Length-1)]);
-        Sakafo[] vb = temp.viandeRouge(c);
-        composant.Add(vb[random.Next(0,vb.Length-1)]);
-        Sakafo[] vr = temp.viandeBlanche(c);
-        composant.Add(vr[random.Next(0,vr.Length-1)]);
-        Sakafo[] ab = temp.abbat(c);
-        composant.Add(ab[random.Next(0,ab.Length-1)]);
-        Sakafo[] ac = temp.accompanement(c);
-        composant.Add(ac[random.Next(0,ac.Length-1)]);
-
-        Sakafo[] resultat = new Sakafo[composant.Count];
-        resultat = composant.ToArray();
-        return resultat;
-    }
-    public Personne[] disponible(Connexion c, DateTime date)
-    {
-        Personne[] personnes = this.getMembreFamille(c);
         List<Personne> list = new List<Personne>();
         foreach (Personne personne in personnes)
         {
@@ -144,9 +127,10 @@ public class Famille
     {
         SqlConnection con = c.connexion();
         con.Open();
-        string sql = "INSERT INTO Famille (nom) VALUES (@nom)";
+        string sql = "INSERT INTO Famille (nom,salaire) VALUES (@nom,@salaire)";
         SqlCommand cmd = new SqlCommand(sql,con);
         cmd.Parameters.AddWithValue("@nom", this.getNom());
+        cmd.Parameters.AddWithValue("@salaire", this.getSalaire());
         cmd.ExecuteNonQuery();
         con.Close();
     }
