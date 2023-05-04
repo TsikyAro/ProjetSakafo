@@ -78,9 +78,9 @@ CREATE TABLE interdiction (
     CONSTRAINT FK_interdiction_santer FOREIGN KEY (idSanter) REFERENCES santer(idSanter)
 );
 create view single as select p.* from personne p left join membreFamille m on p.idPersonne = m.idPersonne where m.idFamille is null;
-create view ViandeB as select * from sakafo where idTypeSakafo ='TS0000001' order by prix asc;
-create view ViandeR as select * from sakafo where idTypeSakafo ='TS0000002' order by prix asc;
-create view abbat as select * from sakafo where idTypeSakafo ='TS0000003' order by prix asc;
-create view LegumeH as select * from sakafo where idTypeSakafo ='TS0000004' order by prix asc;
-create view LegumeB as select * from sakafo where idTypeSakafo ='TS0000005' order by prix asc;
-create view Accompagnement as select * from sakafo where idTypeSakafo ='TS0000006' order by prix asc;
+CREATE VIEW ViandeR AS SELECT TOP 100 PERCENT * FROM sakafo  WHERE idTypeSakafo ='TS0000001' ORDER BY prix ASC;
+CREATE VIEW ViandeB AS SELECT TOP 100 PERCENT * FROM sakafo WHERE idTypeSakafo ='TS0000002' ORDER BY prix ASC;
+CREATE VIEW Abbat AS SELECT TOP 100 PERCENT * FROM sakafo WHERE idTypeSakafo ='TS0000003' ORDER BY prix ASC;
+CREATE VIEW LegumeH AS SELECT TOP 100 PERCENT * FROM sakafo WHERE idTypeSakafo ='TS0000004' ORDER BY prix ASC;
+CREATE VIEW LegumeB AS SELECT TOP 100 PERCENT * FROM sakafo WHERE idTypeSakafo ='TS0000005' ORDER BY prix ASC;
+CREATE VIEW Accompagnement AS SELECT TOP 100 PERCENT * FROM sakafo WHERE idTypeSakafo ='TS0000006' ORDER BY prix ASC;
