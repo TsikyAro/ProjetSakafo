@@ -8,6 +8,7 @@ namespace Sakafo_isan_andro
         private string idSakafo;
         private string nom;
         private string idTypeSakafo;
+        private double prix;
         public  Sakafo[][] getallSakafoParCategorie(Connexion c){
             Sakafo[] accompanement = this.accompanement(c);
             Sakafo[] legumebas = this.legumeBas(c);
@@ -160,17 +161,23 @@ namespace Sakafo_isan_andro
             cmd.ExecuteNonQuery();
             con.Close();
         }
-        public Sakafo(string idSakafo, string nom, string idTypeSakafo)
+        public Sakafo(string idSakafo, string nom, string idTypeSakafo,double prix)
         {
             this.setIdSakafo(idSakafo);
             this.setNom(nom);
             this.setIdTypeSakafo(idTypeSakafo);
+            this.setPrix(prix);
         }
 
         public Sakafo()
         {
         }
-
+        public double getPrix(){
+            return prix;
+        } 
+        public void setPrix(double prix){
+            this.prix = prix;
+        }
         public string getIdSakafo()
         {
             return idSakafo;
