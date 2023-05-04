@@ -98,12 +98,12 @@ public class Personne
     {
         SqlConnection con = c.connexion();
         con.Open();
-        String sql = $"select  from disponibilite where idPersonne = '{this.getIdPersonne()}' leDate = CONVERT(datetime, '{date.ToString("dd/MM/yyyy")}', 103)";
+        String sql = $"select disponibilite from disponibilite where idPersonne = '{this.getIdPersonne()}' leDate = CONVERT(datetime, '{date.ToString("dd/MM/yyyy")}', 103)";
         SqlCommand command = new SqlCommand(sql, con);
         SqlDataReader data = command.ExecuteReader();
         if(data.Read())
         {
-            return data.GetInt32(0);
+            return 1;
         }
         else
         {
