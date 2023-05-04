@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ITU\\s4\\Mr Tahiana\\ProjetSakafo\\ProjetSakafo.csproj": {}
+    "D:\\Fitia\\Java\\Sakafo isan'andro\\ProjetSakafo\\ProjetSakafo.csproj": {}
   },
   "projects": {
-    "D:\\ITU\\s4\\Mr Tahiana\\ProjetSakafo\\ProjetSakafo.csproj": {
+    "D:\\Fitia\\Java\\Sakafo isan'andro\\ProjetSakafo\\ProjetSakafo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ITU\\s4\\Mr Tahiana\\ProjetSakafo\\ProjetSakafo.csproj",
+        "projectUniqueName": "D:\\Fitia\\Java\\Sakafo isan'andro\\ProjetSakafo\\ProjetSakafo.csproj",
         "projectName": "ProjetSakafo",
-        "projectPath": "D:\\ITU\\s4\\Mr Tahiana\\ProjetSakafo\\ProjetSakafo.csproj",
-        "packagesPath": "C:\\Users\\Tsiky Aro\\.nuget\\packages\\",
-        "outputPath": "D:\\ITU\\s4\\Mr Tahiana\\ProjetSakafo\\obj\\",
+        "projectPath": "D:\\Fitia\\Java\\Sakafo isan'andro\\ProjetSakafo\\ProjetSakafo.csproj",
+        "packagesPath": "C:\\Users\\Fitia Lalaina\\.nuget\\packages\\",
+        "outputPath": "D:\\Fitia\\Java\\Sakafo isan'andro\\ProjetSakafo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Tsiky Aro\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Fitia Lalaina\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net7.0-windows"
@@ -37,6 +37,12 @@
       "frameworks": {
         "net7.0-windows7.0": {
           "targetAlias": "net7.0-windows",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

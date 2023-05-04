@@ -1,0 +1,5 @@
+D:\Fitia\Java\Sakafo isan'andro\ProjetSakafo\obj\Debug\net7.0-windows\ProjetSakafo.csproj.AssemblyReference.cache
+D:\Fitia\Java\Sakafo isan'andro\ProjetSakafo\obj\Debug\net7.0-windows\ProjetSakafo.GeneratedMSBuildEditorConfig.editorconfig
+D:\Fitia\Java\Sakafo isan'andro\ProjetSakafo\obj\Debug\net7.0-windows\ProjetSakafo.AssemblyInfoInputs.cache
+D:\Fitia\Java\Sakafo isan'andro\ProjetSakafo\obj\Debug\net7.0-windows\ProjetSakafo.AssemblyInfo.cs
+D:\Fitia\Java\Sakafo isan'andro\ProjetSakafo\obj\Debug\net7.0-windows\ProjetSakafo.csproj.CoreCompileInputs.cache
