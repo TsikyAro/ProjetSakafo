@@ -115,7 +115,7 @@ namespace Sakafo_isan_andro
                 message = message + " sont dans " + famille.getNom();
                 MessageBox.Show(message);
             };
-            this.Controls.Add(saveButton);
+            this.Controls.Add(createFamilyButton);
         }
     }
 }
