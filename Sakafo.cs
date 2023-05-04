@@ -36,7 +36,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -53,7 +53,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -70,7 +70,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -88,7 +88,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -106,7 +106,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -123,7 +123,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -140,7 +140,7 @@ namespace Sakafo_isan_andro
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
             {
-                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2));
+                Sakafo temp = new Sakafo(data.GetString(0), data.GetString(1), data.GetString(2), data.GetDouble(3));
                 sakafoList.Add(temp);
             }
             Sakafo[] sakafoArray = new Sakafo[sakafoList.Count];
@@ -152,10 +152,11 @@ namespace Sakafo_isan_andro
         {
             SqlConnection con = c.connexion();
             con.Open();
-            String sql = "INSERT INTO sakafo (nom, idTypeSakafo) VALUES ('@nom', '@idTypeSakafo')";
+            String sql = "INSERT INTO sakafo (nom, idTypeSakafo,prix) VALUES (@nom, @idTypeSakafo,@prix)";
             SqlCommand cmd = new SqlCommand(sql);
             cmd.Parameters.AddWithValue("@nom", this.getNom());
             cmd.Parameters.AddWithValue("@idTypeSakafo", this.getIdTypeSakafo());
+            cmd.Parameters.AddWithValue("@prix", this.getPrix());
             cmd.ExecuteNonQuery();
             con.Close();
         }
