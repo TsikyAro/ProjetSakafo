@@ -32,7 +32,7 @@ namespace Sakafo_isan_andro
             List<Sakafo> sakafoList = new List<Sakafo>();
             SqlConnection con = c.connexion();
             con.Open();
-            String sql = "SELECT * FROM AcC";
+            String sql = "SELECT * FROM accompagnement";
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
@@ -84,7 +84,7 @@ namespace Sakafo_isan_andro
             List<Sakafo> sakafoList = new List<Sakafo>();
             SqlConnection con = c.connexion();
             con.Open();
-            String sql = "SELECT * FROM AbB";
+            String sql = "SELECT * FROM abbat";
             SqlCommand command = new SqlCommand(sql, con);
             SqlDataReader data = command.ExecuteReader();
             while (data.Read())
